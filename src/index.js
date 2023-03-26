@@ -19,7 +19,7 @@ function onType(event) {
   refs.countryList.innerHTML = '';
   refs.card.innerHTML = '';
 
-  const query = event.target.value;
+  const query = event.target.value.trim();
 
   // Prevent error by not fetching data if query is empty
   if (query.length === 0) {
