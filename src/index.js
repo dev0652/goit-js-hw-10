@@ -37,11 +37,14 @@ function onResolve(array) {
     displayInfoMsg();
     return;
   } else if (array.length > 1 && array.length <= 10) {
+    refs.card.innerHTML = '';
+
     //   update list markup
     const markup = makeListMarkup(array);
     refs.countryList.innerHTML = markup;
     return;
   } else {
+    // refs.countryList.innerHTML = '';
     //   create card markup
     const markup = makeCardMarkup(array);
     refs.card.innerHTML = markup;
