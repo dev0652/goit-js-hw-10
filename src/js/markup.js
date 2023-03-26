@@ -33,7 +33,9 @@ export function makeCardMarkup(array) {
         </li>
 
         <li class="country-details-item">
-          <span class="bold">Languages:</span> ${Object.values(languages)}
+          <span class="bold">Languages:</span> ${Object.values(languages).join(
+            ', '
+          )}
         </li>
       </ul>
         `;
