@@ -17,6 +17,7 @@ refs.searchBox.addEventListener('input', debounce(onType, DEBOUNCE_DELAY));
 function onType(event) {
   //   Clear results on next input
   refs.countryList.innerHTML = '';
+  refs.card.innerHTML = '';
 
   const query = event.target.value;
 
@@ -38,14 +39,11 @@ function onResolve(array) {
   } else if (array.length > 1 && array.length <= 10) {
     //   update list markup
     const markup = makeListMarkup(array);
-
     refs.countryList.innerHTML = markup;
-
-    console.log('Success! Found these countries:', array);
-
     return;
   } else {
     //   create card markup
-    console.log('Success! Found one country:', array);
+    const markup = makeCardMarkup(array);
+    refs.card.innerHTML = markup;
   }
 }

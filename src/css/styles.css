@@ -27,14 +27,18 @@ picture {
   margin-bottom: 16px;
 }
 
-.country-list {
-  list-style-type: none; 
+ul {
+    list-style-type: none;
+}
+
+.country-list, .country-details {
   display: flex;
 flex-direction: column;
 gap: 7px;
 }
 
-.list-item {
+.list-item,
+.title-cnt {
     display: flex;
     align-items: center;
     gap: 7px;
@@ -42,9 +46,23 @@ gap: 7px;
 
 .flag {
   width: 32px;
-  /* height: 24px; */
+  height: 100%;
 }
 
-.name {
+.name, .country-card-title {
   margin: 0;
+}
+
+.title-cnt {
+  display: flex;
+  gap: 10px;
+  font-size: 1.7rem;
+}
+
+.country-details {
+  padding-left: 0;
+}
+
+.bold {
+  font-weight: bold;
 }
