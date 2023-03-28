@@ -3,7 +3,7 @@ import debounce from 'lodash.debounce';
 
 import fetchCountries from './js/fetchCountries.js';
 import getRefs from './js/refs.js';
-import { displayInfoMsg } from './js/notifications.js';
+import { displayInfoMsg, displayErrorMsg } from './js/notifications.js';
 import { makeListMarkup, makeCardMarkup } from './js/markup.js';
 
 // Get elements refs
@@ -16,18 +16,18 @@ refs.searchBox.addEventListener('input', debounce(onType, DEBOUNCE_DELAY));
 // Callback for addEventListener
 function onType(event) {
   //   Clear results on next input
-  refs.countryList.innerHTML = '';
-  refs.card.innerHTML = '';
+  clearResults();
 
+  // Get rid of leading or trailing spaces
   const query = event.target.value.trim();
 
   // Prevent error by not fetching data if query is empty
-  if (query.length === 0) {
+  if (!query) {
     return;
   }
 
   // Fetch search matches
-  fetchCountries(query).then(onResolve).catch(console.log);
+  fetchCountries(query).then(onResolve).catch(displayErrorMsg);
 }
 
 // Promise resolve handler
@@ -44,9 +44,14 @@ function onResolve(array) {
     refs.countryList.innerHTML = markup;
     return;
   } else {
-    // refs.countryList.innerHTML = '';
     //   create card markup
     const markup = makeCardMarkup(array);
     refs.card.innerHTML = markup;
   }
+}
+
+// Clear results
+function clearResults() {
+  refs.countryList.innerHTML = '';
+  refs.card.innerHTML = '';
 }
