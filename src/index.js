@@ -1,8 +1,8 @@
 import './css/styles.css';
 import debounce from 'lodash.debounce';
 
-import fetchCountries from './js/fetchCountries.js';
-import getRefs from './js/refs.js';
+import { fetchCountries } from './js/fetchCountries.js';
+import { getRefs } from './js/refs.js';
 import { displayInfoMsg, displayErrorMsg } from './js/notifications.js';
 import { makeListMarkup, makeCardMarkup } from './js/markup.js';
 
